@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TODO List</title>
+    <script src="main.js" defer></script>
+    <script src="https://kit.fontawesome.com/ae38fdb830.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="app-container" class="app-container">
+        <div id="header" class="header">
+            <h1>TODO Tasks list</h1>
+        </div>
+        <div id="header-menu" class="header-menu">
+            <a href="#">My tasks</a>
+            <a href="#">Additional tasks</a>
+            <a href="#">+Create new list</a>
+        </div>
+        <div id="tasks-field" class="tasks-field">
+            <div id="tasks-field-ongoing" class="tasks-field-form">
+                <h2>Ongoing tasks</h2>
+                <form id="ongoing-tasks">
+                    <input type="checkbox" id="o-task1" name="o-task1" class="tasks">
+                    <label for="task1">Finish this project!</label>
+                </form>
+            </div>
+            <div id="tasks-field-finished" class="tasks-field-form">
+                <h2>Finished tasks</h2>
+                <form id="finished-tasks">
+                    <input type="checkbox" id="f-task1" name="f-task1" class="tasks">
+                    <label for="task1">Restaurant page project</label>
+                </form>
+            </div>
+        </div>
+        <div id="add-task" class="add-task">
+            <button id="add-task-btn" class="add-task-btn"><i class="fas fa-plus"></i></button>
+        </div>
+        <div id="bottom-menu" class="bottom-menu">
+            <div><i class="fas fa-bars"></i></div>
+            <div><i class="fas fa-ellipsis-v"></i></div>
+        </div>
+    </div>
+  </body>
+</html>
