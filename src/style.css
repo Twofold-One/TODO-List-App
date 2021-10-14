@@ -145,19 +145,22 @@ input:checked + label {
     z-index: 2;
 }
 
-.task-window-menu-name > input {
+.task-window-menu-name > textarea {
     width: 100%;
     height: auto;
     border: none;
     font-size: 2em;
-    overflow: scroll;
+    overflow: hidden;
+    resize: none;
 }
 
-.task-window-menu-description > input {
+.task-window-menu-description > textarea {
     width: 100%;
     height: fit-content;
     border: none;
     font-size: 1.5em;
+    overflow: hidden;
+    resize: none;
 }
 
 .task-window-menu-buttons {
