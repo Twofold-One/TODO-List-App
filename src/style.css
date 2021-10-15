@@ -33,14 +33,20 @@ body {
     margin: 10px;
 }
 
-.header-menu {
+.header-menu,
+.header-menu-additional-tasks {
     max-width:300px;
     overflow: auto;
     white-space: nowrap;
-    margin: 5px 10px;
+    margin: 5px;
 }
 
-.header-menu > a {
+.header-menu-additional-tasks {
+    display: inline;
+}
+
+.header-menu > a,
+.header-menu-additional-tasks > a {
     display: inline-block;
     margin: 0;
     padding: 0.5em;
@@ -49,11 +55,12 @@ body {
     border-radius: 5px;
 }
 
-.header-menu > a:hover {
+.header-menu > a:hover,
+.header-menu-additional-tasks > a:hover {
     background-color: lightgrey;
 }
 
-.tasks-field-form {
+.tasks-field-container {
     margin: 10px 5px;
 }
 /* line throuth the text if input is checked */
@@ -62,7 +69,12 @@ input:checked + label {
     text-decoration: line-through;
 }
 
-.task-label:hover {
+.o-tasks:hover,
+.o-tasks > label:hover,
+.o-tasks > input:hover,
+.f-tasks:hover,
+.f-tasks > label:hover,
+.f-tasks > input:hover {
     background-color: lightgrey;
     cursor: pointer;
 }
@@ -203,7 +215,8 @@ input:checked + label {
     opacity: 0.8;
 }
 
-.tasks-list-window-menu {
+.tasks-list-window-menu,
+.tasks-list-window-menu-additional-tasks {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -213,14 +226,20 @@ input:checked + label {
     bottom: 0;
     left: 0;
     z-index: 2;
+    overflow: auto;
+    white-space: nowrap;
 }
 
-.tasks-list-window-menu > a {
+.tasks-list-window-menu > a,
+.tasks-list-window-menu-additional-tasks > a {
    padding: 10px 10px;
 }
 
 .tasks-list-window-menu > .create-new-task {
+    position: absolute;
     border-top: 1px solid gray;
+    bottom: 0;
+    width: 100%;
 }
 
 

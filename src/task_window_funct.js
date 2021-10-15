@@ -1,7 +1,7 @@
-const DOM = (() => {
-    const addTaskBtn = document.getElementById('add-task-btn');
+// const DOM = (() => {
+//     const addTaskBtn = document.getElementById('add-task-btn');
 
-    return {
-        addTaskBtn,
-    };
-})();
+//     return {
+//         addTaskBtn,
+//     };
+// })();

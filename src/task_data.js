@@ -1,6 +1,10 @@
 const DataModule = (() => {
     // all tasks data array
     const tasksList = [];
+    const defaultTasks = {
+        ongoingTaskList: [],
+        finishedTaskList: [],
+    };
 
     // new project factory
     const newList = (title) => {
@@ -51,6 +55,7 @@ const DataModule = (() => {
 
     return {
         tasksList,
+        defaultTasks,
         createNewList,
         deleteList,
         createNewTaskInTheList,
