@@ -14,23 +14,25 @@
         </div>
         <div id="header-menu" class="header-menu">
             <a href="#">My tasks</a>
-            <a href="#">Additional tasks</a>
+            <div id="header-menu-additional-tasks" class="header-menu-additional-tasks">
+                <!-- <a href="#">Additional tasks</a> -->
+            </div>
             <a id="create-new-task" class="create-new-task" href="#">+Create new list</a>
         </div>
         <div id="tasks-field" class="tasks-field">
-            <div id="tasks-field-ongoing" class="tasks-field-form">
+            <div id="tasks-field-ongoing" class="tasks-field-container">
                 <h2>Ongoing tasks</h2>
-                <form id="ongoing-tasks">
-                    <input type="checkbox" id="o-task1" name="o-task1" class="tasks">
-                    <label for="task1" id="task-label" class="task-label">Finish this project!</label>
-                </form>
+                    <div id="o-tasks" class="o-tasks" data-task="1">
+                        <input type="checkbox" id="o-task" name="o-task1" class="tasks">
+                        <label for="task1">Finish this project!</label>
+                    </div>
             </div>
-            <div id="tasks-field-finished" class="tasks-field-form">
+            <div id="tasks-field-finished" class="tasks-field-container">
                 <h2>Finished tasks</h2>
-                <form id="finished-tasks">
-                    <input type="checkbox" id="f-task1" name="f-task1" class="tasks" checked>
-                    <label for="task1" id="task-label" class="task-label">Restaurant page project</label>
-                </form>
+                <div id="f-tasks" class="f-tasks" data-task="1">
+                    <input type="checkbox" id="f-task" name="f-task1" class="tasks" checked>
+                    <label for="task1">Restaurant page project</label>
+                </div>
             </div>
         </div>
         <div id="bottom-elements" class="bottom-elements">
@@ -64,7 +66,9 @@
             <div id="tasks-list-window-font" class="tasks-list-window-font"></div>
             <div id="tasks-list-window-menu" class="tasks-list-window-menu">
                     <a href="#">My tasks</a>
-                    <a href="#">Additional tasks</a>
+                    <div id="tasks-list-window-menu-additional-tasks" class="tasks-list-window-menu-additional-tasks">
+                        <!-- <a href="#">Additional tasks</a> -->
+                    </div>
                     <a id="create-new-task" class="create-new-task" href="#">+Create new list</a>
             </div>
         </div>
