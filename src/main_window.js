@@ -7,6 +7,8 @@ const DOM = (() => {
     const tasksListWindowMenu = document.getElementById(
         'tasks-list-window-menu'
     );
+    const createNewListBtn = document.getElementById('create-new-list');
+    const newListWindow = document.getElementById('new-list-window');
 
     function openWindow(window) {
         window.classList.add('show');
@@ -19,6 +21,8 @@ const DOM = (() => {
         tasksListBtn,
         tasksListWindow,
         tasksListWindowMenu,
+        createNewListBtn,
+        newListWindow,
         openWindow,
     };
 })();
@@ -49,4 +53,10 @@ function tasksListBtnClick() {
     window.addEventListener('mouseup', closeTasksList);
 }
 
-export { addNewTaskBtnClick, tasksListBtnClick };
+function createNewListBtnClick() {
+    const openNewListWindow = () => DOM.openWindow(DOM.newListWindow);
+
+    DOM.createNewListBtn.addEventListener('click', openNewListWindow);
+}
+
+export { addNewTaskBtnClick, tasksListBtnClick, createNewListBtnClick };

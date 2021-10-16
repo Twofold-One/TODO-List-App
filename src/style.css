@@ -125,6 +125,49 @@ input:checked + label {
 
 /* pop-up menu elements styling */
 
+/* create new list menu */
+
+.new-list-window {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    z-index: 2;
+}
+
+.new-list-window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-list-window-header > h1 {
+    margin: 5px;
+}
+
+.new-list-window-header > button {
+    font-size: 1.5em;
+    border: none;
+    background-color: white;
+    color: grey;
+    margin: 5px;
+}
+
+.new-list-window-header > button:hover {
+    color: black;
+    cursor: pointer;
+}
+
+.new-list-window > textarea {
+    width: 100%;
+    font-size: 2em;
+    overflow: hidden;
+    resize: none;
+}
+
 /* create new task menu */
 
 .new-task-window {

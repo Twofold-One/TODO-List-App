@@ -1,12 +1,8 @@
 const DataModule = (() => {
     // all tasks data array
     const tasksList = [];
-    const defaultTasks = {
-        ongoingTaskList: [],
-        finishedTaskList: [],
-    };
 
-    // new project factory
+    // new list factory
     const newList = (title) => {
         const ongoingTaskList = [];
         const finishedTaskList = [];
@@ -53,13 +49,35 @@ const DataModule = (() => {
         return tasksList[listIndex].finishedTaskList.splice(taskIndex, 1);
     }
 
+    function defaultTasksList() {
+        return tasksList.push(newList('My tasks'));
+    }
+
+    function defaultTasks() {
+        createNewTaskInTheList(
+            0,
+            'Ongoing task 1',
+            'My ongoing task 1',
+            'ongoing',
+            'none'
+        );
+        createNewTaskInTheList(
+            0,
+            'Finished task 1',
+            'My finished task 1',
+            'finished',
+            'none'
+        );
+    }
+
     return {
         tasksList,
-        defaultTasks,
         createNewList,
         deleteList,
         createNewTaskInTheList,
         deleteTask,
+        defaultTasksList,
+        defaultTasks,
     };
 })();
 

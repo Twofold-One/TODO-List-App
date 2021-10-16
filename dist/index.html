@@ -13,26 +13,26 @@
             <h1>TODO Tasks</h1>
         </div>
         <div id="header-menu" class="header-menu">
-            <a href="#">My tasks</a>
+            <!-- <a href="#">My tasks</a> -->
             <div id="header-menu-additional-tasks" class="header-menu-additional-tasks">
                 <!-- <a href="#">Additional tasks</a> -->
             </div>
-            <a id="create-new-task" class="create-new-task" href="#">+Create new list</a>
+            <a id="create-new-list" class="create-new-list" href="#">+Create new list</a>
         </div>
         <div id="tasks-field" class="tasks-field">
             <div id="tasks-field-ongoing" class="tasks-field-container">
                 <h2>Ongoing tasks</h2>
-                    <div id="o-tasks" class="o-tasks" data-task="1">
+                    <!-- <div id="o-tasks" class="o-tasks" data-task="1">
                         <input type="checkbox" id="o-task" name="o-task1" class="tasks">
                         <label for="task1">Finish this project!</label>
-                    </div>
+                    </div> -->
             </div>
             <div id="tasks-field-finished" class="tasks-field-container">
                 <h2>Finished tasks</h2>
-                <div id="f-tasks" class="f-tasks" data-task="1">
+                <!-- <div id="f-tasks" class="f-tasks" data-task="1">
                     <input type="checkbox" id="f-task" name="f-task1" class="tasks" checked>
                     <label for="task1">Restaurant page project</label>
-                </div>
+                </div> -->
             </div>
         </div>
         <div id="bottom-elements" class="bottom-elements">
@@ -45,6 +45,15 @@
             </div>
         </div>
         <!-- pop-up elements -->
+        <!-- new list window -->
+        <div id="new-list-window" class="new-list-window">
+            <div class="new-list-window-header">
+                <button id="close-btn"><i class="fas fa-times"></i></button>
+                <h2>Create new list</h1>
+                <button id="ready-btn">Ready</button>
+            </div>
+            <textarea id="new-list-name" placeholder="New list name" rows="1" autofocus></textarea>
+        </div>
         <!-- new task window -->
         <div id="new-task-window" class="new-task-window">
             <div id="new-task-window-font" class="new-task-window-font"></div>
@@ -65,7 +74,7 @@
         <div id="tasks-list-window" class="tasks-list-window">
             <div id="tasks-list-window-font" class="tasks-list-window-font"></div>
             <div id="tasks-list-window-menu" class="tasks-list-window-menu">
-                    <a href="#">My tasks</a>
+                    <!-- <a href="#">My tasks</a> -->
                     <div id="tasks-list-window-menu-additional-tasks" class="tasks-list-window-menu-additional-tasks">
                         <!-- <a href="#">Additional tasks</a> -->
                     </div>
