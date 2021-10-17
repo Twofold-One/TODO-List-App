@@ -19,7 +19,6 @@ const TaskFieldModule = (() => {
         function listActivityCheck(list) {
             return list.activeList === true;
         }
-
         const currentActiveList = DataModule.tasksList.find(listActivityCheck);
 
         DOM.tasksEl.forEach((element) => {
@@ -31,10 +30,12 @@ const TaskFieldModule = (() => {
                     currentActiveList.tasks[taskNumber].on = false;
                     displayModule.displayActiveList();
                     changeTaskStatus();
+                    console.log(currentActiveList);
                 } else if (!e.target.checked === true) {
                     currentActiveList.tasks[taskNumber].on = true;
                     displayModule.displayActiveList();
                     changeTaskStatus();
+                    console.log(currentActiveList);
                 }
             });
         });

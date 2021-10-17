@@ -6,18 +6,19 @@ import {
     createNewListBtnClick,
     createNewListMenuBtnClick,
 } from './main_window_btn_clicks';
-import newListModule from './create_new_list_window';
+import NewListModule from './create_new_list_window';
 import DataModule from './task_data';
 import displayModule from './display_data';
 import TaskFieldModule from './tasks_field';
+import NewTaskModule from './add_new_task';
 // import { formatDistance, subDays } from 'date-fns';
 
 addNewTaskBtnClick();
 tasksListBtnClick();
 createNewListBtnClick();
 createNewListMenuBtnClick();
-newListModule.closeWindow();
-newListModule.createNewList();
+NewListModule.closeWindow();
+NewListModule.createNewList();
 
 DataModule.defaultTasksList();
 DataModule.defaultTasks();
@@ -40,3 +41,4 @@ displayModule.taskListMain();
 displayModule.taskListWindow();
 displayModule.displayActiveList();
 TaskFieldModule.changeTaskStatus();
+NewTaskModule.newTask();

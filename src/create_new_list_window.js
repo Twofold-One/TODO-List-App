@@ -15,7 +15,7 @@ const DOM = (() => {
     };
 })();
 
-const newListModule = (() => {
+const NewListModule = (() => {
     function closeWindow() {
         function handleClick() {
             DOM.newListWndow.classList.remove('show');
@@ -46,4 +46,4 @@ const newListModule = (() => {
     return { closeWindow, createNewList };
 })();
 
-export default newListModule;
+export default NewListModule;
