@@ -9,6 +9,7 @@ import {
 import newListModule from './create_new_list_window';
 import DataModule from './task_data';
 import displayModule from './display_data';
+import TaskFieldModule from './tasks_field';
 // import { formatDistance, subDays } from 'date-fns';
 
 addNewTaskBtnClick();
@@ -25,7 +26,7 @@ DataModule.createNewTaskInTheList(
     0,
     'My new task',
     'my new task description',
-    'finished',
+    false,
     'any'
 );
 // DataModule.createNewList('list1');
@@ -38,3 +39,4 @@ DataModule.createNewTaskInTheList(
 displayModule.taskListMain();
 displayModule.taskListWindow();
 displayModule.displayActiveList();
+TaskFieldModule.changeTaskStatus();

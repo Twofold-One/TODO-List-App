@@ -4,10 +4,9 @@ const DataModule = (() => {
 
     // new list factory
     const newList = (title) => {
-        const ongoingTaskList = [];
-        const finishedTaskList = [];
+        const tasks = [];
         const activeList = false;
-        return { title, ongoingTaskList, finishedTaskList, activeList };
+        return { title, tasks, activeList };
     };
 
     function createNewList(title) {
@@ -19,35 +18,21 @@ const DataModule = (() => {
     }
 
     // new task factory
-    const newTask = (title, description, status, date) => ({
+    const newTask = (title, description, on, date) => ({
         title,
         description,
-        status,
+        on,
         date,
     });
 
-    function createNewTaskInTheList(
-        listIndex,
-        title,
-        description,
-        status,
-        date
-    ) {
-        if (status === 'ongoing') {
-            return tasksList[listIndex].ongoingTaskList.push(
-                newTask(title, description, status, date)
-            );
-        }
-        return tasksList[listIndex].finishedTaskList.push(
-            newTask(title, description, status, date)
+    function createNewTaskInTheList(listIndex, title, description, on, date) {
+        return tasksList[listIndex].tasks.push(
+            newTask(title, description, on, date)
         );
     }
 
-    function deleteTask(listIndex, taskIndex, status) {
-        if (status === 'ongoing') {
-            return tasksList[listIndex].ongoingTaskList.splice(taskIndex, 1);
-        }
-        return tasksList[listIndex].finishedTaskList.splice(taskIndex, 1);
+    function deleteTask(listIndex, taskIndex) {
+        return tasksList[listIndex].tasks.splice(taskIndex, 1);
     }
 
     function defaultTasksList() {
@@ -59,20 +44,24 @@ const DataModule = (() => {
             0,
             'Ongoing task 1',
             'My ongoing task 1',
-            'ongoing',
+            true,
             'none'
         );
         createNewTaskInTheList(
             0,
             'Finished task 1',
             'My finished task 1',
-            'finished',
+            false,
             'none'
         );
     }
 
     function defaultTasksListActiveStatus() {
         tasksList[0].activeList = true;
+    }
+
+    function changeTaskOnStatus(task) {
+        return !task.on;
     }
 
     return {
@@ -84,6 +73,7 @@ const DataModule = (() => {
         defaultTasksList,
         defaultTasks,
         defaultTasksListActiveStatus,
+        changeTaskOnStatus,
     };
 })();
 
