@@ -4,7 +4,8 @@ import {
     addNewTaskBtnClick,
     tasksListBtnClick,
     createNewListBtnClick,
-} from './main_window';
+    createNewListMenuBtnClick,
+} from './main_window_btn_clicks';
 import newListModule from './create_new_list_window';
 import DataModule from './task_data';
 import displayModule from './display_data';
@@ -13,11 +14,13 @@ import displayModule from './display_data';
 addNewTaskBtnClick();
 tasksListBtnClick();
 createNewListBtnClick();
+createNewListMenuBtnClick();
 newListModule.closeWindow();
 newListModule.createNewList();
 
 DataModule.defaultTasksList();
 DataModule.defaultTasks();
+DataModule.defaultTasksListActiveStatus();
 DataModule.createNewTaskInTheList(
     0,
     'My new task',
@@ -30,8 +33,8 @@ DataModule.createNewTaskInTheList(
 // DataModule.createNewList('list3');
 // DataModule.createNewList('list4');
 
-console.log(DataModule.tasksList);
+// console.log(DataModule.tasksList);
 
 displayModule.taskListMain();
 displayModule.taskListWindow();
-displayModule.defaultTasks();
+displayModule.displayActiveList();

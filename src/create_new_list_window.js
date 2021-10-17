@@ -42,6 +42,7 @@ const newListModule = (() => {
         }
         DOM.readyBtn.addEventListener('click', handleClick);
     }
+
     return { closeWindow, createNewList };
 })();
 

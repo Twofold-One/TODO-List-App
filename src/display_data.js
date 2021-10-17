@@ -8,6 +8,7 @@ const DOM = (() => {
     const tasksField = document.getElementById('tasks-field');
     const tasksFieldOngoing = document.getElementById('tasks-field-ongoing');
     const tasksFieldFinished = document.getElementById('tasks-field-finished');
+    const taskListTags = document.querySelectorAll('[data-list-tag]');
 
     return {
         headerMenu,
@@ -15,6 +16,7 @@ const DOM = (() => {
         tasksField,
         tasksFieldOngoing,
         tasksFieldFinished,
+        taskListTags,
     };
 })();
 
@@ -25,9 +27,13 @@ const displayModule = (() => {
             const newList = document.createElement('a');
             newList.href = '#';
             newList.dataset.list = `${index}`;
+            newList.dataset.listTag = '';
             newList.textContent = `${list.title}`;
+            if (list.activeList === true) {
+                newList.className = 'active-list';
+            }
 
-            DOM.headerMenu.append(newList);
+            DOM.headerMenu.appendChild(newList);
 
             return DOM.headerMenu;
         });
@@ -39,72 +45,85 @@ const displayModule = (() => {
             const newList = document.createElement('a');
             newList.href = '#';
             newList.dataset.list = `${index}`;
+            newList.dataset.listTag = '';
             newList.textContent = `${list.title}`;
+            if (list.activeList === true) {
+                newList.className = 'active-list';
+            }
 
-            DOM.taskListWindow.append(newList);
+            DOM.taskListWindow.appendChild(newList);
 
             return DOM.taskListWindow;
         });
     }
 
-    function defaultTasks() {
-        function ongoingTasks() {
-            DataModule.tasksList[0].ongoingTaskList.forEach((task, index) => {
-                const newTaskOngoing = document.createElement('div');
-                newTaskOngoing.id = 'o-tasks';
-                newTaskOngoing.className = 'o-tasks';
-                newTaskOngoing.dataset.task = `${index}`;
+    function displayOngoingTasks(list) {
+        list.ongoingTaskList.forEach((task, index) => {
+            const newTaskOngoing = document.createElement('div');
+            newTaskOngoing.dataset.status = 'ongoing';
+            newTaskOngoing.dataset.taskNumber = `${index}`;
+            newTaskOngoing.className = 'o-tasks';
 
-                const newTaskOngoingInput = document.createElement('input');
-                newTaskOngoingInput.type = 'checkbox';
-                newTaskOngoingInput.id = 'o-task';
-                newTaskOngoingInput.name = `o-task${index}`;
-                newTaskOngoingInput.className = 'tasks';
+            const newTaskOngoingInput = document.createElement('input');
+            newTaskOngoingInput.type = 'checkbox';
+            newTaskOngoingInput.dataset.status = 'ongoing';
+            newTaskOngoingInput.dataset.taskNumber = `${index}`;
+            newTaskOngoingInput.name = `o-task${index}`;
+            newTaskOngoingInput.className = 'tasks';
 
-                const newTaskOngoingInputLabel =
-                    document.createElement('label');
-                newTaskOngoingInputLabel.setAttribute('for', `o-task${index}`);
-                newTaskOngoingInputLabel.textContent = task.title;
+            const newTaskOngoingInputLabel = document.createElement('label');
+            newTaskOngoingInputLabel.setAttribute('for', `o-task${index}`);
+            newTaskOngoingInputLabel.dataset.taskNumber = `${index}`;
+            newTaskOngoingInputLabel.textContent = task.title;
 
-                newTaskOngoing.appendChild(newTaskOngoingInput);
-                newTaskOngoing.appendChild(newTaskOngoingInputLabel);
-                return DOM.tasksFieldOngoing.appendChild(newTaskOngoing);
-            });
+            newTaskOngoing.appendChild(newTaskOngoingInput);
+            newTaskOngoing.appendChild(newTaskOngoingInputLabel);
+            return DOM.tasksFieldOngoing.appendChild(newTaskOngoing);
+        });
+    }
+
+    function displayFinishedTasks(list) {
+        list.finishedTaskList.forEach((task, index) => {
+            const newTaskFinished = document.createElement('div');
+            newTaskFinished.dataset.status = 'finished';
+            newTaskFinished.dataset.taskNumber = `${index}`;
+            newTaskFinished.className = 'f-tasks';
+
+            const newTaskFinishedInput = document.createElement('input');
+            newTaskFinishedInput.type = 'checkbox';
+            newTaskFinishedInput.dataset.status = 'finished';
+            newTaskFinishedInput.dataset.taskNumber = `${index}`;
+            newTaskFinishedInput.name = `f-task${index}`;
+            newTaskFinishedInput.className = 'tasks';
+            newTaskFinishedInput.checked = true;
+
+            const newTaskFinishedInputLabel = document.createElement('label');
+            newTaskFinishedInputLabel.setAttribute('for', `f-task${index}`);
+            newTaskFinishedInputLabel.dataset.taskNumber = `${index}`;
+            newTaskFinishedInputLabel.textContent = task.title;
+
+            newTaskFinished.appendChild(newTaskFinishedInput);
+            newTaskFinished.appendChild(newTaskFinishedInputLabel);
+            return DOM.tasksFieldFinished.appendChild(newTaskFinished);
+        });
+    }
+
+    // TODO finish function which will display elements of the active list
+    function displayActiveList() {
+        function listActivityCheck(list) {
+            return list.activeList === true;
         }
 
-        function finishedTasks() {
-            DataModule.tasksList[0].finishedTaskList.forEach((task, index) => {
-                const newTaskFinished = document.createElement('div');
-                newTaskFinished.id = 'f-tasks';
-                newTaskFinished.className = 'f-tasks';
-                newTaskFinished.dataset.task = `${index}`;
-
-                const newTaskFinishedInput = document.createElement('input');
-                newTaskFinishedInput.type = 'checkbox';
-                newTaskFinishedInput.id = 'f-task';
-                newTaskFinishedInput.name = `f-task${index}`;
-                newTaskFinishedInput.className = 'tasks';
-                newTaskFinishedInput.checked = true;
-
-                const newTaskFinishedInputLabel =
-                    document.createElement('label');
-                newTaskFinishedInputLabel.setAttribute('for', `f-task${index}`);
-                newTaskFinishedInputLabel.textContent = task.title;
-
-                newTaskFinished.appendChild(newTaskFinishedInput);
-                newTaskFinished.appendChild(newTaskFinishedInputLabel);
-                return DOM.tasksFieldFinished.appendChild(newTaskFinished);
-            });
-        }
-
-        ongoingTasks();
-        finishedTasks();
+        const currentActiveList = DataModule.tasksList.find(listActivityCheck);
+        // console.log(currentActiveList);
+        displayOngoingTasks(currentActiveList);
+        displayFinishedTasks(currentActiveList);
     }
 
     return {
         taskListMain,
         taskListWindow,
-        defaultTasks,
+        displayActiveList,
     };
 })();
 

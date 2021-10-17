@@ -6,7 +6,8 @@ const DataModule = (() => {
     const newList = (title) => {
         const ongoingTaskList = [];
         const finishedTaskList = [];
-        return { title, ongoingTaskList, finishedTaskList };
+        const activeList = false;
+        return { title, ongoingTaskList, finishedTaskList, activeList };
     };
 
     function createNewList(title) {
@@ -70,6 +71,10 @@ const DataModule = (() => {
         );
     }
 
+    function defaultTasksListActiveStatus() {
+        tasksList[0].activeList = true;
+    }
+
     return {
         tasksList,
         createNewList,
@@ -78,6 +83,7 @@ const DataModule = (() => {
         deleteTask,
         defaultTasksList,
         defaultTasks,
+        defaultTasksListActiveStatus,
     };
 })();
 

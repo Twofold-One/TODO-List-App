@@ -60,6 +60,11 @@ body {
     background-color: lightgrey;
 }
 
+.active-list {
+    background-color: lightgray;
+    color:blue;
+}
+
 .tasks-field-container {
     margin: 10px 5px;
 }
@@ -278,7 +283,7 @@ input:checked + label {
    padding: 10px 10px;
 }
 
-.tasks-list-window-menu > .create-new-task {
+.tasks-list-window-menu > .create-new-list {
     position: absolute;
     border-top: 1px solid gray;
     bottom: 0;
