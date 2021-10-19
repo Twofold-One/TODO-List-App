@@ -316,7 +316,7 @@ input:checked + label {
 
 .this-task-name > h1,
 .this-task-description > p,
-.this-task-status > p,
+.this-task-status > label,
 .this-task-date > i {
     margin: 5px
 }
@@ -326,6 +326,25 @@ input:checked + label {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.this-task-delete {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 20px;
+    display:flex;
+    justify-content: center;
+}
+
+.this-task-delete > i {
+    color: black;
+    font-size: 2em;
+}
+
+.this-task-delete > i:hover {
+    color: red;
+    cursor: pointer;
 }
 
 /* show class */

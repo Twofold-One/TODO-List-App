@@ -10,7 +10,7 @@ import NewListModule from './create_new_list_window';
 import DataModule from './task_data';
 import displayModule from './display_data';
 import TaskFieldModule from './tasks_field';
-import NewTaskModule from './add_new_task';
+// import NewTaskModule from './add_new_task';
 // import { formatDistance, subDays } from 'date-fns';
 
 addNewTaskBtnClick();
@@ -27,7 +27,7 @@ DataModule.createNewTaskInTheList(
     0,
     'My new task',
     'my new task description',
-    false,
+    true,
     'any'
 );
 // DataModule.createNewList('list1');
@@ -41,4 +41,4 @@ displayModule.taskListMain();
 displayModule.taskListWindow();
 displayModule.displayActiveList();
 TaskFieldModule.changeTaskStatus();
-NewTaskModule.newTask();
+displayModule.displayChosenTaskWindow(DataModule.tasksList[0], 0);

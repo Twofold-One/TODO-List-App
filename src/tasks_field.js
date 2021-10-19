@@ -5,23 +5,27 @@ const DOM = (() => {
     // I have to reassing dynamically created nodes, beacuse
     // of initial value in the DOM element is evaluated upon
     // first expanding
-    const tasksEl = document.querySelectorAll('[data-task-tag]');
+    const tasksElInput = document.querySelectorAll('[data-task-tag]');
+    const thisTask = document.querySelectorAll('[data-this-task]');
+    const thisTaskWindow = document.getElementById('this-task-window');
 
     return {
-        tasksEl,
+        tasksElInput,
+        thisTask,
+        thisTaskWindow,
     };
 })();
 
 const TaskFieldModule = (() => {
     function changeTaskStatus() {
-        DOM.tasksEl = document.querySelectorAll('[data-task-tag]');
+        DOM.tasksElInput = document.querySelectorAll('[data-task-tag]');
 
         function listActivityCheck(list) {
             return list.activeList === true;
         }
         const currentActiveList = DataModule.tasksList.find(listActivityCheck);
 
-        DOM.tasksEl.forEach((element) => {
+        DOM.tasksElInput.forEach((element) => {
             element.addEventListener('input', (e) => {
                 const { taskNumber } = e.target.dataset;
                 console.log(taskNumber);
@@ -40,6 +44,18 @@ const TaskFieldModule = (() => {
             });
         });
     }
+
+    // TODO
+
+    // function openThisTaskWindow() {
+    //     DOM.thisTask = document.querySelectorAll('[data-this-task]');
+
+    //     DOM.thisTask.forEach((element) => {
+    //         element.addEventListener('click', (e) => {
+    //             console.log(e.target);
+    //         });
+    //     }
+    // }
 
     return {
         changeTaskStatus,
