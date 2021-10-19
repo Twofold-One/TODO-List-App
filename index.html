@@ -88,17 +88,24 @@
                     <i class="fas fa-chevron-left"></i>
                 </div>
                 <div id="this-task-name" class="this-task-name">
-                    <h1 contenteditable="true">Finish this project!</h1>
+                    <h1 contenteditable="true" data-task-title>Finish this project!</h1>
                 </div>
                 <div id="this-task-description" class="this-task-description">
-                    <p contenteditable="true">This task description</p>
+                    <p contenteditable="true" data-task-description>This task description</p>
                 </div>
                 <div id="this-task-status" class="this-task-status">
-                    <p contenteditable="true">Ongoing task</p>
+                    <label for="this-task-status">Task status:</label>
+                    <select name="this-task-status" id="this-task-status">
+                        <option value="ongoing">Ongoing</option>
+                        <option value="finished">Finished</option>
+                    </select>
                 </div>
-                <div id="this-task-date" class="this-task-date">
+                <div id="this-task-date" class="this-task-date" data-task-date>
                     <i class="fas fa-calendar-alt"></i> 
-                    <p>XX.XX.XXXX</p>
+                    <p id="date-value">XX.XX.XXXX</p>
+                </div>
+                <div id="this-task-delete" class="this-task-delete">
+                    <i class="fas fa-trash"></i>
                 </div>
             </div>
         </div>
