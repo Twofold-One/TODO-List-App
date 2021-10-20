@@ -45,20 +45,30 @@ const TaskFieldModule = (() => {
         });
     }
 
-    // TODO
-
-    // function openThisTaskWindow() {
-    //     DOM.thisTask = document.querySelectorAll('[data-this-task]');
-
-    //     DOM.thisTask.forEach((element) => {
-    //         element.addEventListener('click', (e) => {
-    //             console.log(e.target);
-    //         });
-    //     }
-    // }
+    function openThisTaskWindow() {
+        DOM.thisTask = document.querySelectorAll('[data-this-task]');
+        function listActivityCheck(list) {
+            return list.activeList === true;
+        }
+        const currentActiveList = DataModule.tasksList.find(listActivityCheck);
+        console.log(currentActiveList);
+        console.log(DOM.thisTask);
+        DOM.thisTask.forEach((element) => {
+            element.addEventListener('click', (e) => {
+                const thisTaskNumber = e.target.dataset.taskNumber;
+                console.log(e.target.dataset.taskNumber);
+                DOM.thisTaskWindow.classList.add('show');
+                return displayModule.displayChosenTaskWindow(
+                    currentActiveList,
+                    thisTaskNumber
+                );
+            });
+        });
+    }
 
     return {
         changeTaskStatus,
+        openThisTaskWindow,
     };
 })();
 

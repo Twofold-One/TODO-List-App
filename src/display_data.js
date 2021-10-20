@@ -77,7 +77,7 @@ const displayModule = (() => {
                 const newTaskOngoing = document.createElement('div');
                 // newTaskOngoing.dataset.status = 'ongoing';
                 newTaskOngoing.dataset.taskNumber = `${index}`;
-                newTaskOngoing.dataset.thisTask = '';
+                // newTaskOngoing.dataset.thisTask = '';
                 newTaskOngoing.className = 'o-tasks';
 
                 const newTaskOngoingInput = document.createElement('input');
@@ -93,6 +93,7 @@ const displayModule = (() => {
                 newTaskOngoingInputLabel.setAttribute('for', `o-task${index}`);
                 newTaskOngoingInputLabel.dataset.taskNumber = `${index}`;
                 newTaskOngoingInputLabel.textContent = task.title;
+                newTaskOngoingInputLabel.dataset.thisTask = '';
 
                 newTaskOngoing.appendChild(newTaskOngoingInput);
                 newTaskOngoing.appendChild(newTaskOngoingInputLabel);
@@ -108,7 +109,7 @@ const displayModule = (() => {
                 const newTaskFinished = document.createElement('div');
                 // newTaskFinished.dataset.status = 'finished';
                 newTaskFinished.dataset.taskNumber = `${index}`;
-                newTaskFinished.dataset.thisTask = '';
+                // newTaskFinished.dataset.thisTask = '';
                 newTaskFinished.className = 'f-tasks';
 
                 const newTaskFinishedInput = document.createElement('input');
@@ -125,6 +126,7 @@ const displayModule = (() => {
                 newTaskFinishedInputLabel.setAttribute('for', `f-task${index}`);
                 newTaskFinishedInputLabel.dataset.taskNumber = `${index}`;
                 newTaskFinishedInputLabel.textContent = task.title;
+                newTaskFinishedInputLabel.dataset.thisTask = '';
 
                 newTaskFinished.appendChild(newTaskFinishedInput);
                 newTaskFinished.appendChild(newTaskFinishedInputLabel);
@@ -159,7 +161,7 @@ const displayModule = (() => {
         }
 
         const goBackBtn = document.createElement('div');
-        goBackBtn.id = 'go-back';
+        goBackBtn.id = 'this-task-go-back';
         goBackBtn.className = 'go-back';
         goBackBtn.insertAdjacentHTML(
             'afterbegin',

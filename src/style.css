@@ -74,10 +74,10 @@ input:checked + label {
     text-decoration: line-through;
 }
 
-.o-tasks:hover,
+/* .o-tasks:hover, */
 .o-tasks > label:hover,
 .o-tasks > input:hover,
-.f-tasks:hover,
+/* .f-tasks:hover, */
 .f-tasks > label:hover,
 .f-tasks > input:hover {
     background-color: lightgrey;
