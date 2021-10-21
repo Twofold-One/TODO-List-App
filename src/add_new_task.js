@@ -3,7 +3,7 @@ import DataModule from './task_data';
 import TaskFieldModule from './tasks_field';
 
 const DOM = (() => {
-    // I have to reassing dynamically created nodes, beacuse
+    // I have to reassing dynamically created nodes, because
     // of initial value in the DOM element is evaluated upon
     // first expanding
     const newTaskName = document.getElementById('new-task-name');
@@ -36,14 +36,15 @@ const NewTaskModule = (() => {
 
         const taskName = DOM.newTaskName.value;
         const taskDescription = DOM.newTaskDescription.value;
-
-        DataModule.createNewTaskInTheList(
-            currentActiveListIndex,
-            taskName,
-            taskDescription,
-            true,
-            'none'
-        );
+        if (taskName !== '') {
+            DataModule.createNewTaskInTheList(
+                currentActiveListIndex,
+                taskName,
+                taskDescription,
+                true,
+                'none'
+            );
+        }
 
         displayModule.displayActiveList();
         TaskFieldModule.changeTaskStatus();

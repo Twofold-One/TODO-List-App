@@ -20,16 +20,18 @@ const DOM = (() => {
 
 // TODO this task window functionallity
 const taskWindowModule = (() => {
-    // function closeTaskWindow() {
-    //     return DOM.thisTaskWidnow.classList.remove('show');
-    // }
-    function backBtnClick() {
-        // const backBtn = document.getElementById('this-task-go-back-btn');
-        // console.log(backBtn);
-        // DOM.backBtn.addEventListener('click', (e) => {
-        //     console.log(e.target);
-        // });
+    function closeTaskWindow() {
+        return DOM.thisTaskWidnow.classList.remove('show');
     }
+    function backBtnClick() {
+        DOM.backBtn = document.getElementById('this-task-go-back-btn');
+        if (DOM.backBtn) {
+            DOM.backBtn.addEventListener('click', closeTaskWindow, false);
+        }
+    }
+    // TODO thisTaskEdit functionality
+    function thisTaskEdit() {}
+
     return {
         backBtnClick,
     };

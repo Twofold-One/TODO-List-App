@@ -168,7 +168,6 @@ const displayModule = (() => {
             'afterbegin',
             '<i id="this-task-go-back-btn" class="fas fa-chevron-left"></i>'
         );
-        taskWindowModule.backBtnClick();
 
         const thisTaskName = document.createElement('div');
         thisTaskName.id = 'this-task-name';
@@ -234,6 +233,7 @@ const displayModule = (() => {
         DOM.newTaskWindow.appendChild(thisTaskStatus);
         DOM.newTaskWindow.appendChild(thisTaskDate);
         DOM.newTaskWindow.appendChild(deleteBtn);
+        taskWindowModule.backBtnClick();
     }
 
     return {
