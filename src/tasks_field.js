@@ -1,5 +1,6 @@
 import displayModule from './display_data';
 import DataModule from './task_data';
+// import taskWindowModule from './task_window';
 
 const DOM = (() => {
     // I have to reassing dynamically created nodes, beacuse
@@ -28,8 +29,7 @@ const TaskFieldModule = (() => {
         DOM.tasksElInput.forEach((element) => {
             element.addEventListener('input', (e) => {
                 const { taskNumber } = e.target.dataset;
-                console.log(taskNumber);
-                console.log(currentActiveList.tasks[taskNumber].on);
+
                 if (e.target.checked === true) {
                     currentActiveList.tasks[taskNumber].on = false;
                     displayModule.displayActiveList();
@@ -51,13 +51,13 @@ const TaskFieldModule = (() => {
             return list.activeList === true;
         }
         const currentActiveList = DataModule.tasksList.find(listActivityCheck);
-        console.log(currentActiveList);
-        console.log(DOM.thisTask);
+
         DOM.thisTask.forEach((element) => {
             element.addEventListener('click', (e) => {
                 const thisTaskNumber = e.target.dataset.taskNumber;
-                console.log(e.target.dataset.taskNumber);
+                console.log(currentActiveList);
                 DOM.thisTaskWindow.classList.add('show');
+
                 return displayModule.displayChosenTaskWindow(
                     currentActiveList,
                     thisTaskNumber

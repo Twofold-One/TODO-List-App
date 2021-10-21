@@ -20,7 +20,6 @@ const NewListModule = (() => {
         function handleClick() {
             DOM.newListWndow.classList.remove('show');
         }
-
         DOM.closeBtn.addEventListener('click', handleClick);
     }
 

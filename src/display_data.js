@@ -1,4 +1,5 @@
 import DataModule from './task_data';
+import taskWindowModule from './task_window';
 
 const DOM = (() => {
     const headerMenu = document.getElementById('header-menu-additional-tasks');
@@ -165,8 +166,9 @@ const displayModule = (() => {
         goBackBtn.className = 'go-back';
         goBackBtn.insertAdjacentHTML(
             'afterbegin',
-            '<i class="fas fa-chevron-left"></i>'
+            '<i id="this-task-go-back-btn" class="fas fa-chevron-left"></i>'
         );
+        taskWindowModule.backBtnClick();
 
         const thisTaskName = document.createElement('div');
         thisTaskName.id = 'this-task-name';

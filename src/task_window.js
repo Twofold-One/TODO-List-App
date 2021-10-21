@@ -1,5 +1,5 @@
 const DOM = (() => {
-    const backBtn = document.querySelector('#this-task-go-back > i');
+    const backBtn = document.getElementById('this-task-go-back-btn');
     const taskTitle = document.querySelector('[data-task-title]');
     const taskDescription = document.querySelector('[data-task-descritption]');
     const taskStatus = document.querySelector('[data-task-status]');
@@ -20,14 +20,15 @@ const DOM = (() => {
 
 // TODO this task window functionallity
 const taskWindowModule = (() => {
-    function closeTaskWindow() {
-        return DOM.thisTaskWidnow.classList.remove('show');
-    }
+    // function closeTaskWindow() {
+    //     return DOM.thisTaskWidnow.classList.remove('show');
+    // }
     function backBtnClick() {
-        DOM.backBtn = document.querySelector('#this-task-go-back > i');
-        DOM.backBtn.addEventListener('click', (e) => {
-            console.log(e.target);
-        });
+        // const backBtn = document.getElementById('this-task-go-back-btn');
+        // console.log(backBtn);
+        // DOM.backBtn.addEventListener('click', (e) => {
+        //     console.log(e.target);
+        // });
     }
     return {
         backBtnClick,
