@@ -1,11 +1,6 @@
 // import _ from 'lodash';
 import './style.css';
-import {
-    addNewTaskBtnClick,
-    tasksListBtnClick,
-    createNewListBtnClick,
-    createNewListMenuBtnClick,
-} from './main_window_btn_clicks';
+import mainWindowBtn from './main_window_btn_clicks';
 import NewListModule from './create_new_list_window';
 import DataModule from './task_data';
 import displayModule from './display_data';
@@ -15,23 +10,23 @@ import taskWindowModule from './task_window';
 
 // import { formatDistance, subDays } from 'date-fns';
 
-addNewTaskBtnClick();
-tasksListBtnClick();
-createNewListBtnClick();
-createNewListMenuBtnClick();
+mainWindowBtn.addNewTaskBtnClick();
+mainWindowBtn.tasksListBtnClick();
+mainWindowBtn.createNewListBtnClick();
+mainWindowBtn.createNewListMenuBtnClick();
 NewListModule.closeWindow();
 NewListModule.createNewList();
 
 DataModule.defaultTasksList();
 DataModule.defaultTasks();
 DataModule.defaultTasksListActiveStatus();
-DataModule.createNewTaskInTheList(
-    0,
-    'My new task',
-    'my new task description',
-    true,
-    'any'
-);
+// DataModule.createNewTaskInTheList(
+//     0,
+//     'My new task',
+//     'my new task description',
+//     true,
+//     'any'
+// );
 // DataModule.createNewList('list1');
 // DataModule.createNewList('list2');
 // DataModule.createNewList('list3');
@@ -45,3 +40,4 @@ displayModule.displayActiveList();
 TaskFieldModule.changeTaskStatus();
 // displayModule.displayChosenTaskWindow(DataModule.tasksList[0], 0);
 TaskFieldModule.openThisTaskWindow();
+mainWindowBtn.changeActiveListOnClick();

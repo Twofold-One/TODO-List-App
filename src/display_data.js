@@ -73,68 +73,81 @@ const displayModule = (() => {
     }
 
     function displayOngoingTasks(list) {
-        list.tasks.forEach((task, index) => {
-            if (task.on) {
-                const newTaskOngoing = document.createElement('div');
-                // newTaskOngoing.dataset.status = 'ongoing';
-                newTaskOngoing.dataset.taskNumber = `${index}`;
-                // newTaskOngoing.dataset.thisTask = '';
-                newTaskOngoing.className = 'o-tasks';
+        if (list) {
+            list.tasks.forEach((task, index) => {
+                if (task.on) {
+                    const newTaskOngoing = document.createElement('div');
+                    // newTaskOngoing.dataset.status = 'ongoing';
+                    newTaskOngoing.dataset.taskNumber = `${index}`;
+                    // newTaskOngoing.dataset.thisTask = '';
+                    newTaskOngoing.className = 'o-tasks';
 
-                const newTaskOngoingInput = document.createElement('input');
-                newTaskOngoingInput.type = 'checkbox';
-                // newTaskOngoingInput.dataset.status = 'ongoing';
-                newTaskOngoingInput.dataset.taskNumber = `${index}`;
-                newTaskOngoingInput.name = `o-task${index}`;
-                newTaskOngoingInput.dataset.taskTag = '';
-                newTaskOngoingInput.className = 'tasks';
+                    const newTaskOngoingInput = document.createElement('input');
+                    newTaskOngoingInput.type = 'checkbox';
+                    // newTaskOngoingInput.dataset.status = 'ongoing';
+                    newTaskOngoingInput.dataset.taskNumber = `${index}`;
+                    newTaskOngoingInput.name = `o-task${index}`;
+                    newTaskOngoingInput.dataset.taskTag = '';
+                    newTaskOngoingInput.className = 'tasks';
 
-                const newTaskOngoingInputLabel =
-                    document.createElement('label');
-                newTaskOngoingInputLabel.setAttribute('for', `o-task${index}`);
-                newTaskOngoingInputLabel.dataset.taskNumber = `${index}`;
-                newTaskOngoingInputLabel.textContent = task.title;
-                newTaskOngoingInputLabel.dataset.thisTask = '';
+                    const newTaskOngoingInputLabel =
+                        document.createElement('label');
+                    newTaskOngoingInputLabel.setAttribute(
+                        'for',
+                        `o-task${index}`
+                    );
+                    newTaskOngoingInputLabel.dataset.taskNumber = `${index}`;
+                    newTaskOngoingInputLabel.textContent = task.title;
+                    newTaskOngoingInputLabel.dataset.thisTask = '';
 
-                newTaskOngoing.appendChild(newTaskOngoingInput);
-                newTaskOngoing.appendChild(newTaskOngoingInputLabel);
-                return DOM.tasksFieldOngoing.appendChild(newTaskOngoing);
-            }
-            return DOM.tasksFieldOngoing;
-        });
+                    newTaskOngoing.appendChild(newTaskOngoingInput);
+                    newTaskOngoing.appendChild(newTaskOngoingInputLabel);
+                    return DOM.tasksFieldOngoing.appendChild(newTaskOngoing);
+                }
+                return DOM.tasksFieldOngoing;
+            });
+        }
+        return '';
     }
 
     function displayFinishedTasks(list) {
-        list.tasks.forEach((task, index) => {
-            if (!task.on) {
-                const newTaskFinished = document.createElement('div');
-                // newTaskFinished.dataset.status = 'finished';
-                newTaskFinished.dataset.taskNumber = `${index}`;
-                // newTaskFinished.dataset.thisTask = '';
-                newTaskFinished.className = 'f-tasks';
+        if (list) {
+            list.tasks.forEach((task, index) => {
+                if (!task.on) {
+                    const newTaskFinished = document.createElement('div');
+                    // newTaskFinished.dataset.status = 'finished';
+                    newTaskFinished.dataset.taskNumber = `${index}`;
+                    // newTaskFinished.dataset.thisTask = '';
+                    newTaskFinished.className = 'f-tasks';
 
-                const newTaskFinishedInput = document.createElement('input');
-                newTaskFinishedInput.type = 'checkbox';
-                // newTaskFinishedInput.dataset.status = 'finished';
-                newTaskFinishedInput.dataset.taskNumber = `${index}`;
-                newTaskFinishedInput.name = `f-task${index}`;
-                newTaskFinishedInput.dataset.taskTag = '';
-                newTaskFinishedInput.className = 'tasks';
-                newTaskFinishedInput.checked = true;
+                    const newTaskFinishedInput =
+                        document.createElement('input');
+                    newTaskFinishedInput.type = 'checkbox';
+                    // newTaskFinishedInput.dataset.status = 'finished';
+                    newTaskFinishedInput.dataset.taskNumber = `${index}`;
+                    newTaskFinishedInput.name = `f-task${index}`;
+                    newTaskFinishedInput.dataset.taskTag = '';
+                    newTaskFinishedInput.className = 'tasks';
+                    newTaskFinishedInput.checked = true;
 
-                const newTaskFinishedInputLabel =
-                    document.createElement('label');
-                newTaskFinishedInputLabel.setAttribute('for', `f-task${index}`);
-                newTaskFinishedInputLabel.dataset.taskNumber = `${index}`;
-                newTaskFinishedInputLabel.textContent = task.title;
-                newTaskFinishedInputLabel.dataset.thisTask = '';
+                    const newTaskFinishedInputLabel =
+                        document.createElement('label');
+                    newTaskFinishedInputLabel.setAttribute(
+                        'for',
+                        `f-task${index}`
+                    );
+                    newTaskFinishedInputLabel.dataset.taskNumber = `${index}`;
+                    newTaskFinishedInputLabel.textContent = task.title;
+                    newTaskFinishedInputLabel.dataset.thisTask = '';
 
-                newTaskFinished.appendChild(newTaskFinishedInput);
-                newTaskFinished.appendChild(newTaskFinishedInputLabel);
-                return DOM.tasksFieldFinished.appendChild(newTaskFinished);
-            }
-            return DOM.tasksFieldFinished;
-        });
+                    newTaskFinished.appendChild(newTaskFinishedInput);
+                    newTaskFinished.appendChild(newTaskFinishedInputLabel);
+                    return DOM.tasksFieldFinished.appendChild(newTaskFinished);
+                }
+                return DOM.tasksFieldFinished;
+            });
+        }
+        return '';
     }
 
     function resetTasks() {
@@ -166,7 +179,7 @@ const displayModule = (() => {
         goBackBtn.className = 'go-back';
         goBackBtn.insertAdjacentHTML(
             'afterbegin',
-            '<i id="this-task-go-back-btn" class="fas fa-chevron-left"></i>'
+            `<i id="this-task-go-back-btn" data-task-number='${taskNumber}' class="fas fa-chevron-left"></i>`
         );
 
         const thisTaskName = document.createElement('div');
@@ -188,7 +201,7 @@ const displayModule = (() => {
         thisTaskDescription.appendChild(thisTaskDescriptionText);
 
         const thisTaskStatus = document.createElement('div');
-        thisTaskStatus.id = 'this-task-status';
+        thisTaskStatus.id = 'this-task-status-container';
         thisTaskStatus.className = 'this-task-status';
 
         const thisTaskOn = activeList.tasks[taskNumber].on;
@@ -234,6 +247,16 @@ const displayModule = (() => {
         DOM.newTaskWindow.appendChild(thisTaskDate);
         DOM.newTaskWindow.appendChild(deleteBtn);
         taskWindowModule.backBtnClick();
+        taskWindowModule.deleteTaskFromListBtnClick();
+    }
+
+    function initDisplayModule() {
+        taskListMain();
+        taskListWindow();
+        displayActiveList();
+        // TODO
+        // add chosenTaskWindow functionality for newly created lists after delete
+        // displayChosenTaskWindow();
     }
 
     return {
@@ -241,6 +264,7 @@ const displayModule = (() => {
         taskListWindow,
         displayActiveList,
         displayChosenTaskWindow,
+        initDisplayModule,
     };
 })();
 
