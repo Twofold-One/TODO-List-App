@@ -1,4 +1,5 @@
 import displayModule from './display_data';
+import TaskFieldModule from './tasks_field';
 import DataModule from './task_data';
 
 const DOM = (() => {
@@ -96,6 +97,7 @@ const mainWindowBtn = (() => {
             const clickedListNumber = e.target.dataset.list;
             DataModule.tasksList[clickedListNumber].activeList = true;
             displayModule.initDisplayModule();
+            TaskFieldModule.initTaskFieldModule();
             mainWindowBtn.changeActiveListOnClick();
         }
         taskLists.forEach((list) => {
@@ -114,6 +116,7 @@ const mainWindowBtn = (() => {
                 DataModule.tasksList.indexOf(currentActiveList);
             DataModule.deleteList(currentActiveListIndex);
             displayModule.initDisplayModule();
+            changeActiveListOnClick();
         }
         DOM.deleteListBtn.addEventListener('click', deleteCurrentList);
     }

@@ -7,6 +7,7 @@ import displayModule from './display_data';
 import TaskFieldModule from './tasks_field';
 import NewTaskModule from './add_new_task';
 import taskWindowModule from './task_window';
+import DateModule from './date_module';
 
 // import { formatDistance, subDays } from 'date-fns';
 
@@ -20,24 +21,9 @@ NewListModule.createNewList();
 DataModule.defaultTasksList();
 DataModule.defaultTasks();
 DataModule.defaultTasksListActiveStatus();
-// DataModule.createNewTaskInTheList(
-//     0,
-//     'My new task',
-//     'my new task description',
-//     true,
-//     'any'
-// );
-// DataModule.createNewList('list1');
-// DataModule.createNewList('list2');
-// DataModule.createNewList('list3');
-// DataModule.createNewList('list4');
-
-// console.log(DataModule.tasksList);
-
 displayModule.taskListMain();
 displayModule.taskListWindow();
 displayModule.displayActiveList();
 TaskFieldModule.changeTaskStatus();
-// displayModule.displayChosenTaskWindow(DataModule.tasksList[0], 0);
 TaskFieldModule.openThisTaskWindow();
 mainWindowBtn.changeActiveListOnClick();

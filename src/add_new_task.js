@@ -48,6 +48,7 @@ const NewTaskModule = (() => {
 
         displayModule.displayActiveList();
         TaskFieldModule.changeTaskStatus();
+        TaskFieldModule.initTaskFieldModule();
         clearInput();
         DOM.newTaskWindow.classList.remove('show');
     }

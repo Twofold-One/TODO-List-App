@@ -254,9 +254,6 @@ const displayModule = (() => {
         taskListMain();
         taskListWindow();
         displayActiveList();
-        // TODO
-        // add chosenTaskWindow functionality for newly created lists after delete
-        // displayChosenTaskWindow();
     }
 
     return {
