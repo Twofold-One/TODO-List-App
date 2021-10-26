@@ -90,6 +90,22 @@ input:checked + label {
     border-radius: 5px;
 }
 
+.task-date-alert {
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin-top: 3px;
+    margin-bottom: 15px;
+    padding: 5px;
+    width: fit-content;
+    font-size: .8em;
+    font-weight: bold;
+    color: grey;
+}
+
+.past {
+    color:red;
+}
+
 .bottom-elements {
     position: absolute;
     bottom: 0;
@@ -247,6 +263,19 @@ input:checked + label {
     cursor: pointer;
 }
 
+.date-in {
+    font-size: 1.5em;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.date-in:hover {
+    border: 1px solid black;
+}
+
 /* tasks list menu styling */
 
 .tasks-list-window {
@@ -323,15 +352,18 @@ input:checked + label {
 .this-task-name > h1,
 .this-task-description > p,
 .this-task-status > label,
-.this-task-date > i {
-    margin: 5px
+.this-task-date {
+    padding: 10px;
+    margin: 5px;
 }
 
 .this-task-date {
-    display: flex;
+    border-radius: 5px;
+    cursor: pointer;
+    /* display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .this-task-delete {

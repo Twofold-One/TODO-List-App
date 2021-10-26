@@ -8,12 +8,14 @@ const DOM = (() => {
     // first expanding
     const newTaskName = document.getElementById('new-task-name');
     const newTaskDescription = document.getElementById('new-task-description');
+    const newTaskDate = document.getElementById('date-in');
     const saveBtn = document.getElementById('save-button');
     const newTaskWindow = document.getElementById('new-task-window');
 
     return {
         newTaskName,
         newTaskDescription,
+        newTaskDate,
         saveBtn,
         newTaskWindow,
     };
@@ -23,6 +25,7 @@ const NewTaskModule = (() => {
     function clearInput() {
         DOM.newTaskName.value = '';
         DOM.newTaskDescription.value = '';
+        DOM.newTaskDate.value = '';
     }
 
     function newTask() {
@@ -36,13 +39,14 @@ const NewTaskModule = (() => {
 
         const taskName = DOM.newTaskName.value;
         const taskDescription = DOM.newTaskDescription.value;
+        const taskDate = DOM.newTaskDate.value;
         if (taskName !== '') {
             DataModule.createNewTaskInTheList(
                 currentActiveListIndex,
                 taskName,
                 taskDescription,
                 true,
-                'none'
+                taskDate
             );
         }
 

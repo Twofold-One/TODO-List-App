@@ -1,6 +1,8 @@
+import localStorageModule from './localStorage_module';
+
 const DataModule = (() => {
     // all tasks data array
-    const tasksList = [];
+    const tasksList = localStorageModule.get() || [];
 
     // new list factory
     const newList = (title) => {
@@ -10,11 +12,13 @@ const DataModule = (() => {
     };
 
     function createNewList(title) {
-        return tasksList.push(newList(title));
+        tasksList.push(newList(title));
+        localStorageModule.set();
     }
 
     function deleteList(listIndex) {
-        return tasksList.splice(listIndex, 1);
+        tasksList.splice(listIndex, 1);
+        localStorageModule.set();
     }
 
     // new task factory
@@ -26,34 +30,38 @@ const DataModule = (() => {
     });
 
     function createNewTaskInTheList(listIndex, title, description, on, date) {
-        return tasksList[listIndex].tasks.push(
-            newTask(title, description, on, date)
-        );
+        tasksList[listIndex].tasks.push(newTask(title, description, on, date));
+        localStorageModule.set();
     }
 
     function deleteTask(listIndex, taskIndex) {
-        return tasksList[listIndex].tasks.splice(taskIndex, 1);
+        tasksList[listIndex].tasks.splice(taskIndex, 1);
+        localStorageModule.set();
     }
 
     function defaultTasksList() {
-        return tasksList.push(newList('My tasks'));
+        if (tasksList.length === 0) {
+            return tasksList.push(newList('My tasks'));
+        }
     }
 
     function defaultTasks() {
-        createNewTaskInTheList(
-            0,
-            'Ongoing task 1',
-            'My ongoing task 1',
-            true,
-            'none'
-        );
-        createNewTaskInTheList(
-            0,
-            'Finished task 1',
-            'My finished task 1',
-            false,
-            'none'
-        );
+        if (tasksList[0].tasks.length === 0) {
+            createNewTaskInTheList(
+                0,
+                'Ongoing task 1',
+                'My ongoing task 1',
+                true,
+                '2021-10-10'
+            );
+            createNewTaskInTheList(
+                0,
+                'Finished task 1',
+                'My finished task 1',
+                false,
+                '2021-10-10'
+            );
+        }
     }
 
     function defaultTasksListActiveStatus() {
@@ -62,6 +70,12 @@ const DataModule = (() => {
 
     function changeTaskOnStatus(task) {
         return !task.on;
+    }
+
+    function initDefaultDataModule() {
+        defaultTasksList();
+        defaultTasks();
+        defaultTasksListActiveStatus();
     }
 
     return {
@@ -74,6 +88,7 @@ const DataModule = (() => {
         defaultTasks,
         defaultTasksListActiveStatus,
         changeTaskOnStatus,
+        initDefaultDataModule,
     };
 })();
 

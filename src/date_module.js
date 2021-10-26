@@ -1,14 +1,21 @@
-import set from 'date-fns/set';
+import isPast from 'date-fns/isPast';
+import parseISO from 'date-fns/parseISO';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 const DateModule = (() => {
-    const todayDate = new Date();
+    function displayDateAlertText(taskNumber) {
+        return formatDistanceToNow(parseISO(taskNumber.date));
+    }
+
+    function displayDateAlertTextStatus(taskNumber, DOMElement) {
+        if (isPast(parseISO(taskNumber.date))) {
+            DOMElement.classList.add('past');
+        }
+    }
 
     return {
-        todayDate,
+        displayDateAlertText,
+        displayDateAlertTextStatus,
     };
 })();
-
-// use input type date to choos the date
-// use date-fns to display distance from current date.
-console.log(DateModule.todayDate);
-console.log('2');
+export default DateModule;

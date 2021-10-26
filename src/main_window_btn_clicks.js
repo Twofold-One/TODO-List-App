@@ -121,6 +121,14 @@ const mainWindowBtn = (() => {
         DOM.deleteListBtn.addEventListener('click', deleteCurrentList);
     }
 
+    function initMainWindowBtnModule() {
+        addNewTaskBtnClick();
+        tasksListBtnClick();
+        createNewListBtnClick();
+        createNewListMenuBtnClick();
+        changeActiveListOnClick();
+    }
+
     return {
         addNewTaskBtnClick,
         tasksListBtnClick,
@@ -128,6 +136,7 @@ const mainWindowBtn = (() => {
         createNewListMenuBtnClick,
         changeActiveListOnClick,
         deleteActiveList,
+        initMainWindowBtnModule,
     };
 })();
 mainWindowBtn.deleteActiveList();

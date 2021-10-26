@@ -9,21 +9,11 @@ import NewTaskModule from './add_new_task';
 import taskWindowModule from './task_window';
 import DateModule from './date_module';
 
-// import { formatDistance, subDays } from 'date-fns';
+DataModule.initDefaultDataModule();
+displayModule.initDisplayModule();
+TaskFieldModule.initTaskFieldModule();
 
-mainWindowBtn.addNewTaskBtnClick();
-mainWindowBtn.tasksListBtnClick();
-mainWindowBtn.createNewListBtnClick();
-mainWindowBtn.createNewListMenuBtnClick();
+mainWindowBtn.initMainWindowBtnModule();
+
 NewListModule.closeWindow();
 NewListModule.createNewList();
-
-DataModule.defaultTasksList();
-DataModule.defaultTasks();
-DataModule.defaultTasksListActiveStatus();
-displayModule.taskListMain();
-displayModule.taskListWindow();
-displayModule.displayActiveList();
-TaskFieldModule.changeTaskStatus();
-TaskFieldModule.openThisTaskWindow();
-mainWindowBtn.changeActiveListOnClick();

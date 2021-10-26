@@ -1,5 +1,6 @@
 import displayModule from './display_data';
 import DataModule from './task_data';
+import localStorageModule from './localStorage_module';
 // import taskWindowModule from './task_window';
 
 const DOM = (() => {
@@ -53,12 +54,14 @@ const TaskFieldModule = (() => {
 
                 if (e.target.checked === true) {
                     currentActiveList.tasks[taskNumber].on = false;
+                    localStorageModule.set();
                     displayModule.displayActiveList();
                     changeTaskStatus();
                     console.log(currentActiveList);
                     openThisTaskWindow();
                 } else if (!e.target.checked === true) {
                     currentActiveList.tasks[taskNumber].on = true;
+                    localStorageModule.set();
                     displayModule.displayActiveList();
                     changeTaskStatus();
                     console.log(currentActiveList);

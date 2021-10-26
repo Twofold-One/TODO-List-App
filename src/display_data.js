@@ -1,5 +1,6 @@
 import DataModule from './task_data';
 import taskWindowModule from './task_window';
+import DateModule from './date_module';
 
 const DOM = (() => {
     const headerMenu = document.getElementById('header-menu-additional-tasks');
@@ -77,14 +78,11 @@ const displayModule = (() => {
             list.tasks.forEach((task, index) => {
                 if (task.on) {
                     const newTaskOngoing = document.createElement('div');
-                    // newTaskOngoing.dataset.status = 'ongoing';
                     newTaskOngoing.dataset.taskNumber = `${index}`;
-                    // newTaskOngoing.dataset.thisTask = '';
                     newTaskOngoing.className = 'o-tasks';
 
                     const newTaskOngoingInput = document.createElement('input');
                     newTaskOngoingInput.type = 'checkbox';
-                    // newTaskOngoingInput.dataset.status = 'ongoing';
                     newTaskOngoingInput.dataset.taskNumber = `${index}`;
                     newTaskOngoingInput.name = `o-task${index}`;
                     newTaskOngoingInput.dataset.taskTag = '';
@@ -100,8 +98,20 @@ const displayModule = (() => {
                     newTaskOngoingInputLabel.textContent = task.title;
                     newTaskOngoingInputLabel.dataset.thisTask = '';
 
+                    const newTaskDateAlert = document.createElement('div');
+                    newTaskDateAlert.className = 'task-date-alert';
+                    newTaskDateAlert.dataset.taskNumber = `${index}`;
+                    newTaskDateAlert.dataset.thisTaskDateAlert = '';
+                    newTaskDateAlert.textContent = `${DateModule.displayDateAlertText(
+                        task
+                    )}`;
+                    DateModule.displayDateAlertTextStatus(
+                        task,
+                        newTaskDateAlert
+                    );
                     newTaskOngoing.appendChild(newTaskOngoingInput);
                     newTaskOngoing.appendChild(newTaskOngoingInputLabel);
+                    newTaskOngoing.appendChild(newTaskDateAlert);
                     return DOM.tasksFieldOngoing.appendChild(newTaskOngoing);
                 }
                 return DOM.tasksFieldOngoing;
@@ -115,15 +125,12 @@ const displayModule = (() => {
             list.tasks.forEach((task, index) => {
                 if (!task.on) {
                     const newTaskFinished = document.createElement('div');
-                    // newTaskFinished.dataset.status = 'finished';
                     newTaskFinished.dataset.taskNumber = `${index}`;
-                    // newTaskFinished.dataset.thisTask = '';
                     newTaskFinished.className = 'f-tasks';
 
                     const newTaskFinishedInput =
                         document.createElement('input');
                     newTaskFinishedInput.type = 'checkbox';
-                    // newTaskFinishedInput.dataset.status = 'finished';
                     newTaskFinishedInput.dataset.taskNumber = `${index}`;
                     newTaskFinishedInput.name = `f-task${index}`;
                     newTaskFinishedInput.dataset.taskTag = '';
@@ -161,7 +168,6 @@ const displayModule = (() => {
         }
 
         const currentActiveList = DataModule.tasksList.find(listActivityCheck);
-        // console.log(currentActiveList);
         resetTasks();
         displayOngoingTasksH2();
         displayOngoingTasks(currentActiveList);
@@ -222,14 +228,11 @@ const displayModule = (() => {
             </select>`
         );
 
-        const thisTaskDate = document.createElement('div');
+        const thisTaskDate = document.createElement('input');
         thisTaskDate.id = 'this-task-date';
         thisTaskDate.className = 'this-task-date';
-        thisTaskDate.insertAdjacentHTML(
-            'afterbegin',
-            `<i class="fas fa-calendar-alt"></i> 
-            <p id="date-value">${activeList.tasks[taskNumber].date}</p>`
-        );
+        thisTaskDate.type = 'date';
+        thisTaskDate.value = activeList.tasks[taskNumber].date;
 
         const deleteBtn = document.createElement('div');
         deleteBtn.id = 'this-task-delete';

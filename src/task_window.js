@@ -1,13 +1,14 @@
 import DataModule from './task_data';
 import displayModule from './display_data';
 import TaskFieldModule from './tasks_field';
+import localStorageModule from './localStorage_module';
 
 const DOM = (() => {
     const backBtn = document.getElementById('this-task-go-back-btn');
     const taskTitle = document.querySelector('[data-task-title]');
     const taskDescription = document.querySelector('[data-task-description]');
     const taskStatus = document.getElementById('this-task-status');
-    const taskDate = document.getElementById('date-value');
+    const taskDate = document.getElementById('this-task-date');
     const deleteBtn = document.getElementById('this-task-delete');
     const thisTaskWidnow = document.getElementById('this-task-window');
 
@@ -36,11 +37,11 @@ const taskWindowModule = (() => {
             taskStatus.options[taskStatus.selectedIndex].value === 'ongoing';
         console.log(taskOnStatus);
         editedActiveList.tasks[taskNumber].on = taskOnStatus;
-        editedActiveList.tasks[taskNumber].date = DOM.taskDate.textContent;
+        editedActiveList.tasks[taskNumber].date = DOM.taskDate.value;
         return editedActiveList;
     }
 
-    // TODO thisTaskNumber will be taken from back button data attribute
+    // thisTaskNumber will be taken from back button data attribute
     function thisActiveListTasksEdit() {
         function listActivityCheck(list) {
             return list.activeList === true;
@@ -73,6 +74,7 @@ const taskWindowModule = (() => {
                 (e) => {
                     console.log(e.target);
                     deleteTaskFromList();
+                    localStorageModule.set();
                     closeTaskWindow();
                     displayModule.displayActiveList();
                     TaskFieldModule.initTaskFieldModule();
@@ -88,13 +90,14 @@ const taskWindowModule = (() => {
         DOM.taskDescription = document.querySelector('[data-task-description]');
         DOM.taskStatus = document.getElementById('this-task-status');
         // const taskStatus = document.getElementById('this-task-status');
-        DOM.taskDate = document.getElementById('date-value');
+        DOM.taskDate = document.getElementById('this-task-date');
         if (DOM.backBtn) {
             DOM.backBtn.addEventListener(
                 'click',
                 () => {
                     closeTaskWindow();
                     thisActiveListTasksEdit();
+                    localStorageModule.set();
                     displayModule.displayActiveList();
                     TaskFieldModule.initTaskFieldModule();
                 },
