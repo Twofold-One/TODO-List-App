@@ -39,7 +39,6 @@ const DOM = (() => {
     };
 })();
 
-// checkpoint
 const mainWindowBtn = (() => {
     function addNewTaskBtnClick() {
         const openNewTaskWindow = () => DOM.openWindow(DOM.newTaskWindow);
@@ -85,7 +84,6 @@ const mainWindowBtn = (() => {
     function changeActiveListOnClick() {
         const taskLists = document.querySelectorAll('[data-list-tag]');
         function changeActiveList(e) {
-            // console.log(e.target.dataset.list);
             function clearListsActivity() {
                 DataModule.tasksList.forEach((list) => {
                     const everyList = list;
@@ -93,7 +91,6 @@ const mainWindowBtn = (() => {
                 });
             }
             clearListsActivity();
-            console.log(DataModule.tasksList);
             const clickedListNumber = e.target.dataset.list;
             DataModule.tasksList[clickedListNumber].activeList = true;
             displayModule.initDisplayModule();

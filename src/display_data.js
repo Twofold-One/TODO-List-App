@@ -241,7 +241,7 @@ const displayModule = (() => {
             'afterbegin',
             '<i class="fas fa-trash"></i>'
         );
-
+        DOM.newTaskWindow.classList.add('flip-in-hor-bottom');
         taskWindowClear();
         DOM.newTaskWindow.appendChild(goBackBtn);
         DOM.newTaskWindow.appendChild(thisTaskName);

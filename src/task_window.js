@@ -32,10 +32,10 @@ const taskWindowModule = (() => {
         editedActiveList.tasks[taskNumber].descritption =
             DOM.taskDescription.textContent;
         const { taskStatus } = DOM;
-        console.log(taskStatus);
+
         const taskOnStatus =
             taskStatus.options[taskStatus.selectedIndex].value === 'ongoing';
-        console.log(taskOnStatus);
+
         editedActiveList.tasks[taskNumber].on = taskOnStatus;
         editedActiveList.tasks[taskNumber].date = DOM.taskDate.value;
         return editedActiveList;
@@ -71,8 +71,7 @@ const taskWindowModule = (() => {
         if (DOM.deleteBtn) {
             DOM.deleteBtn.addEventListener(
                 'click',
-                (e) => {
-                    console.log(e.target);
+                () => {
                     deleteTaskFromList();
                     localStorageModule.set();
                     closeTaskWindow();
@@ -89,7 +88,6 @@ const taskWindowModule = (() => {
         DOM.taskTitle = document.querySelector('[data-task-title]');
         DOM.taskDescription = document.querySelector('[data-task-description]');
         DOM.taskStatus = document.getElementById('this-task-status');
-        // const taskStatus = document.getElementById('this-task-status');
         DOM.taskDate = document.getElementById('this-task-date');
         if (DOM.backBtn) {
             DOM.backBtn.addEventListener(

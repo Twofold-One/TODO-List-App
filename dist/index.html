@@ -7,7 +7,7 @@
     <script src="main.js" defer></script>
     <script src="https://kit.fontawesome.com/ae38fdb830.js" crossorigin="anonymous"></script>
   </head>
-  <body>
+  <body class="background">
     <div id="app-container" class="app-container">
         <div id="header" class="header">
             <h1>TODO Tasks</h1>
@@ -39,7 +39,7 @@
         <!-- pop-up elements -->
 
         <!-- new list window -->
-        <div id="new-list-window" class="new-list-window">
+        <div id="new-list-window" class="new-list-window swing-in-bottom-fwd">
             <div class="new-list-window-header">
                 <button id="close-btn"><i class="fas fa-times"></i></button>
                 <h2>Create new list</h1>
@@ -49,7 +49,7 @@
         </div>
 
         <!-- new task window -->
-        <div id="new-task-window" class="new-task-window">
+        <div id="new-task-window" class="new-task-window swing-in-bottom-fwd">
             <div id="new-task-window-font" class="new-task-window-font"></div>
             <div id="new-task-window-menu" class="new-task-window-menu">
                 <div id="task-window-menu-name" class="task-window-menu-name">
@@ -66,7 +66,7 @@
             </div>
         </div>
         <!-- tasks list window -->
-        <div id="tasks-list-window" class="tasks-list-window">
+        <div id="tasks-list-window" class="tasks-list-window swing-in-bottom-fwd">
             <div id="tasks-list-window-font" class="tasks-list-window-font"></div>
             <div id="tasks-list-window-menu" class="tasks-list-window-menu">
                     <div id="tasks-list-window-menu-additional-tasks" class="tasks-list-window-menu-additional-tasks">
@@ -76,31 +76,6 @@
         </div>
         <!-- task menu window -->
         <div id="this-task-window" class="this-task-window" >
-            <!-- <div id="this-task-window-menu" class="this-task-window-menu">
-                <div id="go-back" class="go-back">
-                    <i class="fas fa-chevron-left"></i>
-                </div>
-                <div id="this-task-name" class="this-task-name">
-                    <h1 contenteditable="true" data-task-title>Finish this project!</h1>
-                </div>
-                <div id="this-task-description" class="this-task-description">
-                    <p contenteditable="true" data-task-description>This task description</p>
-                </div>
-                <div id="this-task-status" class="this-task-status">
-                    <label for="this-task-status">Task status:</label>
-                    <select name="this-task-status" id="this-task-status">
-                        <option value="ongoing">Ongoing</option>
-                        <option value="finished">Finished</option>
-                    </select>
-                </div>
-                <div id="this-task-date" class="this-task-date" data-task-date>
-                    <i class="fas fa-calendar-alt"></i> 
-                    <p id="date-value">XX.XX.XXXX</p>
-                </div>
-                <div id="this-task-delete" class="this-task-delete">
-                    <i class="fas fa-trash"></i>
-                </div>
-            </div> -->
         </div>
     </div>
   </body>
